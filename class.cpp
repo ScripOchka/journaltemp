@@ -182,27 +182,30 @@ void Weather::rm(int year, int month, int day, double temp)
 
 void Weather::print_magazine(int year1, int month1, int day1, int year2, int month2, int day2) const
 {
+  Weather jour(*this);	
   note tempq;
   for (int i = 0; i < size - 1; i++)
   {
     for (int j = 0; j < size - i - 1; j++)
     {
-      if (magazine[j] > magazine[j + 1])
+      if (jour.magazine[j] > jour.magazine[j + 1])
       {
 
-        tempq = magazine[j];
-        magazine[j] = magazine[j + 1];
-        magazine[j + 1] = tempq;
+        tempq = jour.magazine[j];
+        jour.magazine[j] = jour.magazine[j + 1];
+        jour.magazine[j + 1] = tempq;
       }
     }
   }
 
   int ind = 0;
-  while ((magazine[ind].year <= year1) && (magazine[ind].month <= month1) && (magazine[ind].day <= day1)) ind++;
+  int data1 = year1 * 10000 + month1 * 100 + day1;
+  int data2 = year2 * 10000 + month2 * 100 + day2;
+  while (jour.magazine[ind].year * 10000 + jour.magazine[ind].month * 100 + jour.magazine[ind].day < data1) ind++;
 
-  while ((magazine[ind].year <= year2) && (magazine[ind].month <= month2) && (magazine[ind].day <= day2))
+  while (jour.magazine[ind].year * 10000 + jour.magazine[ind].month * 100 + jour.magazine[ind].day < data2)
   {
-    printf("(%d, %d, %d, %lf)\n", magazine[ind].year, magazine[ind].month, magazine[ind].day, magazine[ind].temp);
+    printf("(%d, %d, %d, %lf)\n", jour.magazine[ind].year, jour.magazine[ind].month, jour.magazine[ind].day, jour.magazine[ind].temp);
     ind++;
   }
   printf("\n");

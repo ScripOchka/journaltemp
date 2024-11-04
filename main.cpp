@@ -7,14 +7,15 @@ int main()
     Weather jour1;
     jour1(2024, 10, 24) = 15;
     jour1(2024, 6, 13) = 10;
+    jour1(2025, 3, 7) = -14;
     jour1(2025, 5, 8) = -4;
     jour1(2024, 12, 3) = -303;
     //jour1.rm(2024, 11, 8, -4);
     
     Weather jour2 = jour1;
-    jour1.print_magazine(2024, 10, 22, 2024, 12, 27);
+    jour1.print_magazine(2024, 10, 22, 2025, 4, 27);
     
-    std::cout << jour2 << std::endl;
+    //std::cout << jour2 << std::endl;
 
     //jour1.rm(2024, 6, 13, 10);
 

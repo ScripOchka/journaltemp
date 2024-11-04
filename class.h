@@ -29,8 +29,16 @@ class Weather
         friend std::ostream& operator<<(std::ostream& out, const Weather& number);
 
     class TemperatureProxy {
-    public:
-        TemperatureProxy(Weather& weather, int year, int month, int day): weather(weather), year(year), month(month), day(day) {}
+      private:
+        Weather& weather;
+        int year, month, day;
+
+      public:
+        TemperatureProxy(Weather& weather, int year, int month, int day):
+            weather(weather),
+            year(year),
+            month(month), 
+            day(day) {}
 
         TemperatureProxy& operator=(double value) {
             if (value > -273.15) {
@@ -38,10 +46,6 @@ class Weather
             }
             return *this;
         }
-
-    private:
-        Weather& weather;
-        int year, month, day;
     };  
 };
 
