@@ -29,10 +29,10 @@ int main()
     
     //std::cout << jour4 << std::endl;
     
-    
-    
     if(jour2 == jour1) printf("Equal\n");
-    else printf("Non-equal\n");
+    else printf("Non-equal\n");  
+    
+
     
   return 0;
 }

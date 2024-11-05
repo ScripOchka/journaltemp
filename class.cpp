@@ -9,7 +9,7 @@ Weather::Weather()
 }
 
 
-Weather::Weather(int year1, int month1, int day1, double temp1)
+Weather::Weather(const int year1, const int month1, const int day1, const double temp1)
 {
   note value;
   value.year = year1;
@@ -58,7 +58,7 @@ Weather::~Weather()
 }
 
 
-bool Weather::operator==(const Weather &b)
+bool Weather::operator==(const Weather &b) const
 {
   if((*this).size != b.size) return false;
   for(int i = 0; i < size; i++)
@@ -69,7 +69,7 @@ bool Weather::operator==(const Weather &b)
 }
 
 
-bool Weather::operator!=(const Weather &b)
+bool Weather::operator!=(const Weather &b) const
 {
   if((*this).size != b.size) return true;
   for(int i = 0; i < size; i++)
@@ -111,13 +111,13 @@ Weather& Weather::operator += (const Weather& b)
   return *this;
 }
 
-Weather::TemperatureProxy Weather::operator()(int year1, int month1, int day1)
+Weather::TemperatureProxy Weather::operator()(const int year1, const int month1, const int day1)
         {
             return TemperatureProxy(*this, year1, month1, day1);
         }
 
 
-void Weather::add(int year1, int month1, int day1, double temp1)
+void Weather::add(const int year1, const int month1, const int day1, const double temp1)
 {
   if(temp1 > -273.15)
   {
@@ -149,7 +149,7 @@ void Weather::add(int year1, int month1, int day1, double temp1)
 
 
 
-void Weather::rm(int year, int month, int day, double temp)
+void Weather::rm(const int year, const int month, const int day, const double temp)
 {
   note value;
   value.year = year;
@@ -180,7 +180,7 @@ void Weather::rm(int year, int month, int day, double temp)
 }
 
 
-void Weather::print_magazine(int year1, int month1, int day1, int year2, int month2, int day2) const
+void Weather::print_magazine(const int year1, const int month1, const int day1, const int year2, const int month2, const int day2) const
 {
   Weather jour(*this);	
   note tempq;
